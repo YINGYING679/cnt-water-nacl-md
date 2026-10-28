@@ -218,3 +218,61 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# CNT project additions; original GitHub rules preserved above
+# Append to remote .gitignore after cloning; retain its existing rules.
+# Raw simulation outputs and checkpoints
+*.xtc
+*.trr
+*.tng
+*.edr
+*.cpt
+*.tpr
+*.log
+*.out
+*.err
+*.gro
+*.pdb
+*.ndx
+*.xvg
+*.npy
+*.npz
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.bak
+*~
+\#*\#
+# Generated GROMACS parameter dumps (keep authored .mdp inputs)
+*_mdout.mdp
+mdout.mdp
+# Python / environments
+__pycache__/
+*.py[cod]
+.venv/
+.venvs/
+venv/
+# Credentials and private local configuration
+.env
+.env.*
+!.env.example
+.ssh/
+.aws/
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+credentials*
+*secret*
+*token*
+.git-credentials
+# Local raw data stores
+raw_data/
+simulation_data/
+private/
+.DS_Store
