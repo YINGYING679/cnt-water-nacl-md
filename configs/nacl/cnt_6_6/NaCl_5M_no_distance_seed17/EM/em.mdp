@@ -1,0 +1,40 @@
+; Running Parameters
+; ===================================================================
+integrator    = steep
+nsteps        = 100000
+emtol         = 1000.0
+emstep        = 0.001
+; Output control
+; ===================================================================
+nstxout       = 10
+;nstvout      = 5
+
+; Constraints
+; ===================================================================
+constraints   = hbonds            ; SPC/E remains rigid through SETTLE
+
+; Neighbor searching
+; ===================================================================
+ns_type       = grid
+cutoff-scheme = verlet
+rlist         = 0.9
+pbc           = xyz
+
+; Electrostatics
+; ===================================================================
+coulombtype    = pme
+rcoulomb       = 0.9
+fourierspacing = 0.1
+pme-order      = 4
+
+; van der Waals
+; ===================================================================
+vdw-type       = Cut-off
+vdw-modifier   = Potential-shift-Verlet
+DispCorr       = no
+rvdw           = 0.9
+
+; Frozen carbon framework
+; ===================================================================
+freezegrps = HCS
+freezedim  = Y Y Y

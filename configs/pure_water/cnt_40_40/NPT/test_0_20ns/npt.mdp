@@ -1,0 +1,58 @@
+; Running parameters
+; ===================================================================
+integrator    = md
+nsteps        = 10000000       ; 20 ns at dt = 0.002 ps
+dt            = 0.002          ; ps (2 fs)
+continuation  = no             ; first NPT segment starts from EM coordinates
+gen-vel       = yes            ; EM output contains no velocities
+gen-temp      = 300
+gen-seed      = -1
+
+; Output control
+; ===================================================================
+nstxout-compressed = 1000      ; save coordinates every 2 ps
+
+; Constraints
+; ===================================================================
+constraints   = hbonds         ; rigid SPC/E geometry
+
+; Neighbor searching
+; ===================================================================
+ns_type       = grid
+cutoff-scheme = verlet
+rlist         = 0.9
+pbc           = xyz
+
+; Electrostatics
+; ===================================================================
+coulombtype    = pme
+rcoulomb       = 0.9
+fourierspacing = 0.1
+pme-order      = 4
+
+; van der Waals
+; ===================================================================
+vdw-type      = Cut-off
+vdw-modifier  = Potential-shift-Verlet
+DispCorr      = no
+rvdw          = 0.9
+
+; Temperature coupling
+; ===================================================================
+tcoupl        = v-rescale
+tc-grps       = HCS Water
+tau_t         = 0.5 0.5
+ref_t         = 300 300
+
+; Pressure coupling
+; ===================================================================
+pcoupl          = c-rescale
+pcoupltype      = semiisotropic
+ref-p           = 0.0 1.0
+tau-p           = 2.0
+compressibility = 0.0 4.5e-5
+
+; Frozen carbon framework
+; ===================================================================
+freezegrps = HCS
+freezedim  = Y Y Y

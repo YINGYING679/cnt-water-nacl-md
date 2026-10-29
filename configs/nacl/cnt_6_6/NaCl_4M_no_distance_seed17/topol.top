@@ -1,0 +1,48 @@
+; CNT(6,6) reservoir-water NaCl topology.
+; Ion parameters follow SI Table S3 (Duenas-Herrera et al.).
+
+[ defaults ]
+; nbfunc  comb-rule  gen-pairs  fudgeLJ  fudgeQQ
+  1       2          no         1.0      1.0
+
+[ atomtypes ]
+; name  at.num  mass     charge  ptype  sigma       epsilon
+  C      6      12.011   0.000   A      0.3568      0.2966
+  HW     1       1.008   0.000   A      0.0000      0.0000
+  OW     8      15.999   0.000   A      0.3166      0.6500
+  Na    11      22.990   0.000   A      0.2310      0.4500
+  Cl    17      35.450   0.000   A      0.4300      0.4200
+
+[ nonbond_params ]
+; i   j   func  sigma   epsilon
+  C   OW   1    0.3367  0.4391
+  C   C    1    0.0     0.0
+
+[ moleculetype ]
+; molname  nrexcl
+Na          1
+
+[ atoms ]
+; nr  type  resnr  residue  atom  cgnr  charge  mass
+  1   Na      1      Na      Na     1     1.0   22.990
+
+[ moleculetype ]
+; molname  nrexcl
+Cl          1
+
+[ atoms ]
+; nr  type  resnr  residue  atom  cgnr  charge  mass
+  1   Cl      1      Cl      Cl     1    -1.0   35.450
+
+#include "honeycombstructure.itp"
+#include "spce.itp"
+
+[ system ]
+CNT(6,6) reservoir water with NaCl at 4 M nominal concentration
+
+[ molecules ]
+; Molecule  count
+HCS         1
+SOL         10814
+Na          779
+Cl          779

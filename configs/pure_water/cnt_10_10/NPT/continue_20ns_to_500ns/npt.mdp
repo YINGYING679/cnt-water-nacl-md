@@ -1,0 +1,65 @@
+; Continue the existing (10,10) CNT-reservoir NPT trajectory from 20 to 500 ns.
+; The parent checkpoint is at step 10,000,000 (20,000 ps).
+
+; Running parameters
+; ===================================================================
+integrator    = md
+dt            = 0.002             ; ps (2 fs)
+tinit         = 0
+init-step     = 10000000          ; existing 20 ns endpoint
+nsteps        = 240000000         ; remaining 480 ns; final step 250,000,000
+continuation  = yes
+gen-vel       = no                ; retain velocities from the checkpoint
+;define       = -DFLEXIBLE
+
+; Output control
+; ===================================================================
+nstxout             = 0
+nstvout             = 0
+nstfout             = 0
+nstxout-compressed  = 1000        ; every 2 ps, matching the reference input
+
+; Constraints
+; ===================================================================
+constraints     = hbonds          ; SPC/E geometry is rigid through SETTLE
+
+; Neighbor searching
+; ===================================================================
+ns_type         = grid
+cutoff-scheme   = verlet
+rlist           = 0.9
+pbc             = xyz
+
+; Electrostatics
+; ===================================================================
+coulombtype     = pme
+rcoulomb        = 0.9
+fourierspacing  = 0.1
+pme-order       = 4
+
+; van der Waals
+; ===================================================================
+vdw-type        = Cut-off
+vdw-modifier    = Potential-shift-Verlet
+DispCorr        = no
+rvdw            = 0.9
+
+; Temperature coupling
+; ===================================================================
+tcoupl          = v-rescale
+tc-grps         = HCS Water
+tau_t           = 0.5 0.5
+ref_t           = 300 300
+
+; Pressure coupling
+; ===================================================================
+pcoupl          = c-rescale
+pcoupltype      = semiisotropic
+ref-p           = 0.0 1.0
+tau-p           = 2.0
+compressibility = 0.0 4.5e-5
+
+; Frozen carbon framework
+; ===================================================================
+freezegrps      = HCS
+freezedim       = Y Y Y

@@ -1,0 +1,19 @@
+40		# n unit cells
+27.120	# nanotube radius       (Angstrom)
+61.230	# nanotube length       (Angstrom)
+30.000	# cap thickness         (Angstrom)
+2310.624	# tube cross-section   (Angstrom^2)
+80.940	# box x-width           (Angstrom)
+83.623	# box y-width           (Angstrom)
+121.230	# box z-width           (Angstrom)
+
+7194	# number of C atoms
+12374	# number of water molecules
+
+820.541	# box volume           (nm^3)
+141.479	# channel volume       (nm^3)
+406.109	# caps/slabs volume    (nm^3)
+547.588	# accessible volume    (nm^3)
+
+15.080	# global water number density     (molecules/nm^3)
+22.597	# accessible water number density (molecules/nm^3)

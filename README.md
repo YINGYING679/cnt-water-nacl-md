@@ -11,7 +11,7 @@ Molecular dynamics simulations of water and NaCl in carbon nanotubes: methods, s
 - [精选结果建议](docs/results-selection.md)（结果文件尚未复制）
 - [来源及 SHA256 清单](docs/source-manifest.tsv)
 - `scripts/pure_water/`、`scripts/nacl/`：首批精选源码
-- `configs/`：CNT(6,6) 纯水与 1 M NaCl 的代表性配置
+- `configs/`：8 种管径的全部现有纯水与 NaCl 参数、拓扑、手写 MDP 配置（见 [覆盖清单](docs/config-coverage.tsv)）
 
 ## 使用范围
 
@@ -19,4 +19,4 @@ Molecular dynamics simulations of water and NaCl in carbon nanotubes: methods, s
 
 本次只精选了部分源码，不是完整可移植工作流。运行所需结构、轨迹、检查点、部分汇总输入及力场依赖未随仓库收录；配置示例不能单独重建体系。拓扑引用的外部文件及其授权需在扩展复现材料时确认。
 
-保留远程原始 README 内容、忽略规则及提交历史；当前整理尚未提交或推送。
+保留远程原始 README 内容、忽略规则及提交历史；整理内容通过 Git 提交同步，原始模拟目录保持不动。

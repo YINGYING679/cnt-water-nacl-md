@@ -1,0 +1,63 @@
+; Running Parameters
+; ===================================================================
+integrator    = md
+;nsteps         = 2000000
+;nsteps        = 100000000           ; 200 ns for test
+nsteps        = 10000000         ; 20 ns test at dt = 0.002 ps
+;nsteps         = 1500000000       ; 3 micro for more independent samples
+dt            = 0.002          ; in picoseconds
+continuation  = no             ; first NPT segment starts from EM coordinates
+gen-vel       = yes            ; EM output contains no velocities
+gen-temp      = 300
+gen-seed      = -1
+;define        = -DFLEXIBLE
+
+; Output control
+; ===================================================================
+nstxout-compressed  = 1000
+
+; Constraints
+; ===================================================================
+constraints     = hbonds            ; standard spc/e: 3 lengths -> also angle fixed
+
+; neighbor searching
+; ===================================================================
+ns_type         = grid
+
+cutoff-scheme   = verlet            ; standard cutoff scheme
+rlist           = 0.9               ; cut-off distance for the short-range neighbor list - with Verlet ignored!
+pbc             = xyz               ; Periodic Boundary Conditions (yes/no)
+
+; Electrostatics
+; ===================================================================
+coulombtype     = pme
+rcoulomb        = 0.9               ; distance for the Coulomb cut-off
+fourierspacing  = 0.1               ; This should give an accuracy of about 2-3*10^-4
+pme-order       = 4;
+
+; VdW
+; ===================================================================
+vdw-type        = Cut-off
+vdw-modifier    = Potential-shift-Verlet
+DispCorr        = no
+rvdw            = 0.9               ; distance for the Van-der-Whaal cut-off
+
+; Temperature Coupling
+; ===================================================================
+tcoupl           = v-rescale
+tc-grps         = HCS Water_Na_Cl
+tau_t               = 0.5  0.5
+ref_t               = 300  300
+
+; Pressure Coupling
+; ===================================================================
+pcoupl           = c-rescale
+pcoupltype       = semiisotropic
+ref-p            = 0.0 1.0
+tau-p            = 2.0
+compressibility  = 0.0 4.5e-5
+
+; Freeze Group Settings
+; ===========================
+freezegrps = HCS
+freezedim  = Y Y Y

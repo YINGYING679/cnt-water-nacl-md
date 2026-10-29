@@ -1,0 +1,10 @@
+CNT = (6,6)
+target_concentration_M = 0.2
+NaCl_pairs = 44
+remaining_water = 12284
+random_seed = 17
+placement = reservoir water replacement
+distance_screening = none
+water_model = rigid SPC/E with SETTLE
+water_geometry_during_EM = rigid
+EM_input = solvated_ions.gro

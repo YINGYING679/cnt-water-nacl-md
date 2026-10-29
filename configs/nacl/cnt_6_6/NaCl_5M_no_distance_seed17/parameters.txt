@@ -1,0 +1,14 @@
+CNT = (6,6)
+target_concentration_M = 5
+NaCl_pairs = 944
+remaining_water = 10484
+realized_concentration_M = 4.997329
+total_atoms = 39034
+random_seed = 17
+placement = random reservoir-water replacement without geometric rejection
+distance_screening = none
+water_model = rigid SPC/E with SETTLE
+water_geometry_during_EM = rigid
+EM_emtol_kJ_mol_nm = 1000
+EM_emstep_nm = 0.001
+EM_nsteps = 100000

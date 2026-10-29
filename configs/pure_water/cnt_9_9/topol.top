@@ -1,0 +1,28 @@
+; Pure-water topology for a (9,9) CNT with two reservoirs.
+; Uses the same force-field parameters as the other CNT_NPT systems.
+
+[ defaults ]
+; nbfunc  comb-rule  gen-pairs  fudgeLJ  fudgeQQ
+  1       2          no         1.0      1.0
+
+[ atomtypes ]
+; name  at.num  mass     charge  ptype  sigma       epsilon
+  C      6      12.011   0.000   A      0.3568      0.2966
+  HW     1       1.008   0.000   A      0.0000      0.0000
+  OW     8      15.999   0.000   A      0.3166      0.6500
+
+[ nonbond_params ]
+; i   j   func  sigma   epsilon
+  C   OW   1    0.3367  0.4391
+  C   C    1    0.0     0.0
+
+#include "honeycombstructure.itp"
+#include "spce.itp"
+
+[ system ]
+Pure-water (9,9) CNT with two reservoirs
+
+[ molecules ]
+; Molecule  count
+HCS         1
+SOL         12374
